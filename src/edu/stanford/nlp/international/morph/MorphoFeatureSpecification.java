@@ -1,13 +1,12 @@
 package edu.stanford.nlp.international.morph;
 
-import java.io.Serializable;
+import edu.stanford.nlp.util.Generics;
+import edu.stanford.nlp.util.Pair;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
-
-import edu.stanford.nlp.util.Generics;
-import edu.stanford.nlp.util.Pair;
 
 /**
  * Morphological feature specification for surface forms in a given language.
@@ -32,7 +31,8 @@ public abstract class MorphoFeatureSpecification implements Serializable {
   
   // WSGDEBUG --
   //   Added NNUM and NGEN for nominals in Arabic
-  public static enum MorphoFeatureType {TENSE,DEF,ASP,MOOD,NNUM,NUM, NGEN, GEN,CASE,PER,POSS,VOICE,OTHER,PROP};
+  // public static enum MorphoFeatureType {TENSE,DEF,ASP,MOOD,NNUM,NUM, NGEN, GEN,CASE,PER,POSS,VOICE,OTHER,PROP}; original
+  public static enum MorphoFeatureType {TENSE,DEF,ASP,MOOD,NNUM,NUM, NGEN, GEN,CASE,PER,POSS,VOICE,OTHER,PROP,ANIMACY,TRANSITIVITY,VERBFORM,VARIANT,DEGREE,GENDER};
   
   protected final Set<MorphoFeatureType> activeFeatures;
   
