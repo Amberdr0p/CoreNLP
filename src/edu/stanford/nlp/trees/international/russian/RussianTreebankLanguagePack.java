@@ -7,61 +7,62 @@ import edu.stanford.nlp.trees.HeadFinder;
 
 public class RussianTreebankLanguagePack extends AbstractTreebankLanguagePack  {
 
-  public static final String[] pennPunctTags = {"''", "``", ".", ":", ",", "PUNCT", "Пункт"}; // LRB RRB
+  public static final String[] russianPunctTags = {"''", "``", ".", ":", ",", "PUNCT", "Пункт"}; // LRB RRB
 
-  private static final String[] pennSFPunctTags = {".", "PUNCT", "Пункт"};
+  private static final String[] russianSFPunctTags = {".", "PUNCT", "Пункт"};
 
-  private static final String[] pennPunctWords = {"=","*","/","\\","]","[","\"","''", "'", "``", "`", ".", "?", "!", ",", ":", "-", "--", "...", ";", "&quot;"};
+  private static final String[] russianPunctWords = {"=","*","/","\\","]","[","\"","''", "'", "``", "`", ".", "?", "!", ",", ":", "-", "--", "...", ";", "&quot;"};
 
-  private static final String[] pennSFPunctWords = {".", "!", "?", "?!", "...", "!?"};
+  private static final String[] russianSFPunctWords = {".", "!", "?", "?!", "...", "!?"};
   
-  private static final String[] frenchStartSymbols = {"ROOT"};
+  private static final String[] russianStartSymbols = {"ROOT"};
 
-  private static final char[] annotationIntroducingChars = {'=', '|', '#', '_'};
+  private static final char[] annotationIntroducingChars = {'-', '|', '#', '_'}; //убрала "=", добавила "-"
   
   // public static final String RU_ENCODING = "UTF-8";
-  
+
   @Override
   public String[] sentenceFinalPunctuationWords() {
-    return pennSFPunctWords;
+    return russianSFPunctWords;
   }
 
   @Override
   public String treebankFileExtension() {
     return "tree";
-  }
+  } // or "conll" as in english datasets?
+
 
   @Override
   public HeadFinder headFinder() {
     // TODO Auto-generated method stub
-    return null;
+    return new RussianHeadFinder(this);
   }
 
   @Override
   public HeadFinder typedDependencyHeadFinder() {
     // TODO Auto-generated method stub
-    return null;
+    return new RussianHeadFinder(this);
   }
 
   @Override
   public String[] punctuationTags() {
-    return pennPunctTags;
+    return russianPunctTags;
   }
 
   @Override
   public String[] punctuationWords() {
-    return pennPunctWords;
+    return russianPunctWords;
   }
 
   @Override
   public String[] sentenceFinalPunctuationTags() {
     // TODO Auto-generated method stub
-    return pennSFPunctTags;
+    return russianSFPunctTags;
   }
 
   @Override
   public String[] startSymbols() {
-    return frenchStartSymbols;
+    return russianStartSymbols;
   }
   
   @Override
@@ -71,7 +72,7 @@ public class RussianTreebankLanguagePack extends AbstractTreebankLanguagePack  {
   
   @Override
   public MorphoFeatureSpecification morphFeatureSpec() {
-    return new FrenchMorphoFeatureSpecification();
+    return new RussainMorphoFeatureSpecification();
   }
 
 }
