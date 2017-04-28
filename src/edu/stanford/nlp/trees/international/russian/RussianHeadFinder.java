@@ -37,27 +37,31 @@ public class RussianHeadFinder extends AbstractCollinsHeadFinder {
 
     // "sentence"
     // OK
-    nonTerminalInfo.put(tlp.startSymbol(), new String[][]{{"left", "VN", "NP"}, {"left"}});
-    nonTerminalInfo.put("SENT", new String[][]{{"left", "VN", "NP"}, {"left"}});
+    nonTerminalInfo.put(tlp.startSymbol(), new String[][]{{"left", "VP", "NP"}, {"left"}});
+    nonTerminalInfo.put("SENT", new String[][]{{"left", "VP", "NP"}, {"left"}});
     
     // adjectival phrases
     nonTerminalInfo.put("AP", new String[][]{{"left", "A", "V"}, {"rightdis", "N", "ET"}, {"left"}});
 
     // adverbial phrases
-    nonTerminalInfo.put("AdP", new String[][]{{"right", "ADV"}, {"left", "N"}, {"right"}});
+    nonTerminalInfo.put("ADVP", new String[][]{{"left", "ADV"}, {"right"}});
 
     // coordinated phrases
-    nonTerminalInfo.put("COORD", new String[][]{{"leftdis", "C", "CC", "ADV", "PP", "P"}, {"left"}});
+    nonTerminalInfo.put("COORD", new String[][]{{"left", "CONJ"}, {"left"}});
 
     // noun phrases
-    nonTerminalInfo.put("NP", new String[][]{{"rightdis", "N", "PRO", "NP", "A"}, {"right", "ET"}, {"right"}});
+    nonTerminalInfo.put("NP", new String[][]{{"left", "ADJ", "NOUN",  "PRON", "NP", "NUM"}, {"left"}});
+    nonTerminalInfo.put("NP", new String[][]{{"right", "NOUN",  "PRON", "NP", "ADJ"}, {"right"}});
+   
 
     // prepositional phrases
     // OK
-    nonTerminalInfo.put("PP", new String[][]{{"left", "ADP", "NOUN", "NP", "PRON", "ADJ", "ADV"}, {"left"}});
+    nonTerminalInfo.put("PP", new String[][]{{"left", "ADP", "NOUN"}, {"left"}); //"в течение"
+    nonTerminalInfo.put("PP", new String[][]{{"left", "ADP"}, {"right"}}); //"в течение"
 
     // verbal nucleus
-    nonTerminalInfo.put("VN", new String[][]{{"right", "V", "VN"}, {"right"}});
+    nonTerminalInfo.put("VP", new String[][]{{"right", "VPinf", "VERB"}, {"right"}});
+    nonTerminalInfo.put("VP", new String[][]{{"left", "VERB", "VPinf"}, {"left"}});
 
     // infinitive clauses
     // OK
@@ -67,34 +71,22 @@ public class RussianHeadFinder extends AbstractCollinsHeadFinder {
     // https://nlp.stanford.edu/nlp/javadoc/javanlp-3.6.0/edu/stanford/nlp/trees/AbstractCollinsHeadFinder.html
 
     // nonfinite clauses
-    nonTerminalInfo.put("VPpart", new String[][]{{"left", "VN", "V", "AP", "A", "AdP", "VPpart"}, {"left"}});
+    nonTerminalInfo.put("VPpart", new String[][]{{"left", "VP", "V", "NOUN", "ADV", "ADJ"}, {"left"}});
 
     // relative clauses
-    nonTerminalInfo.put("Srel", new String[][]{{"left", "NP", "PRO", "PP", "C", "ADV"}});
+    nonTerminalInfo.put("Srel", new String[][]{"left", "CONJ"});
 
     // subordinate clauses
-    nonTerminalInfo.put("Ssub", new String[][]{{"left", "C", "PC", "ADV", "P", "PP"}, {"left"}});
+    nonTerminalInfo.put("Ssub", new String[][]{{"left", "CONJ"}, {"left"}});
 
     // parenthetical clauses
-    nonTerminalInfo.put("Sint", new String[][]{{"left", "VN", "V", "NP", "Sint", "Ssub", "PP"}, {"left"}});
+    //nonTerminalInfo.put("Sint", new String[][]{{"left", "VN", "V", "NP", "Sint", "Ssub", "PP"}, {"left"}});
 
     // adverbes
-    nonTerminalInfo.put("ADV", new String[][] {{"left", "ADV", "PP", "P"}});
+    //nonTerminalInfo.put("ADV", new String[][] {{"left", "ADV", "PP", "P"}});
 
     // compound categories: start with MW: D, A, C, N, ADV, V, P, PRO, CL
-    nonTerminalInfo.put("MWD", new String[][] {{"left", "D"}, {"left"}});
-    nonTerminalInfo.put("MWA", new String[][] {{"left", "P"}, {"left", "N"}, {"right", "A"}, {"right"}});
-    nonTerminalInfo.put("MWC", new String[][] {{"left", "C", "CS"}, {"left"}});
-    nonTerminalInfo.put("MWN", new String[][] {{"right", "N", "ET"}, {"right"}});
-    nonTerminalInfo.put("MWV", new String[][] {{"left", "V"}, {"left"}});
-    nonTerminalInfo.put("MWP", new String[][] {{"left", "P", "ADV", "PRO"}, {"left"}});
-    nonTerminalInfo.put("MWPRO", new String[][] {{"left", "PRO", "CL", "N", "A"}, {"left"}});
-    nonTerminalInfo.put("MWCL", new String[][] {{"left", "CL"}, {"right"}});
-    nonTerminalInfo.put("MWADV", new String[][] {{"left", "P", "ADV"}, {"left"}});
-
-    nonTerminalInfo.put("MWI", new String[][] {{"left", "N", "ADV", "P"}, {"left"}});
-    nonTerminalInfo.put("MWET", new String[][] {{"left", "ET", "N"}, {"left"}});
-
+                                             
     //TODO: wsg2011: For phrasal nodes that lacked a label.
     nonTerminalInfo.put(FrenchXMLTreeReader.MISSING_PHRASAL, new String[][]{{"left"}});
     
