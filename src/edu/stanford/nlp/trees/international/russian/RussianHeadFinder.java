@@ -56,7 +56,7 @@ public class RussianHeadFinder extends AbstractCollinsHeadFinder {
 
     // prepositional phrases
     // OK
-    nonTerminalInfo.put("PP", new String[][]{{"left", "ADP", "NOUN"}, {"left"}); //"в течение"
+    nonTerminalInfo.put("PP", new String[][]{{"left", "ADP", "NOUN"}, {"left"}}); //"в течение"
     nonTerminalInfo.put("PP", new String[][]{{"left", "ADP"}, {"right"}}); //"в течение"
 
     // verbal nucleus
