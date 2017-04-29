@@ -1,6 +1,6 @@
 package edu.stanford.nlp.trees.international.russian;
 
-import edu.stanford.nlp.international.french.FrenchMorphoFeatureSpecification;
+import edu.stanford.nlp.international.french.RussianMorphoFeatureSpecification;
 import edu.stanford.nlp.international.morph.MorphoFeatureSpecification;
 import edu.stanford.nlp.trees.AbstractTreebankLanguagePack;
 import edu.stanford.nlp.trees.HeadFinder;
@@ -72,7 +72,7 @@ public class RussianTreebankLanguagePack extends AbstractTreebankLanguagePack  {
   
   @Override
   public MorphoFeatureSpecification morphFeatureSpec() {
-    return new RussainMorphoFeatureSpecification();
+    return new RussianMorphoFeatureSpecification();
   }
 
 }
