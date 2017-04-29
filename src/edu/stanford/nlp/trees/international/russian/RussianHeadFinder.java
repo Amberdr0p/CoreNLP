@@ -1,4 +1,4 @@
-package edu.stanford.nlp.trees.international.french;
+package edu.stanford.nlp.trees.international.russian;
 
 import edu.stanford.nlp.ling.CategoryWordTag;
 import edu.stanford.nlp.trees.*;
@@ -74,7 +74,7 @@ public class RussianHeadFinder extends AbstractCollinsHeadFinder {
     nonTerminalInfo.put("VPpart", new String[][]{{"left", "VP", "V", "NOUN", "ADV", "ADJ"}, {"left"}});
 
     // relative clauses
-    nonTerminalInfo.put("Srel", new String[][]{"left", "CONJ"});
+    nonTerminalInfo.put("Srel", new String[][]{{"left", "CONJ"}, {"left"}});
 
     // subordinate clauses
     nonTerminalInfo.put("Ssub", new String[][]{{"left", "CONJ"}, {"left"}});
@@ -88,7 +88,7 @@ public class RussianHeadFinder extends AbstractCollinsHeadFinder {
     // compound categories: start with MW: D, A, C, N, ADV, V, P, PRO, CL
                                              
     //TODO: wsg2011: For phrasal nodes that lacked a label.
-    nonTerminalInfo.put(FrenchXMLTreeReader.MISSING_PHRASAL, new String[][]{{"left"}});
+    //nonTerminalInfo.put(FrenchXMLTreeReader.MISSING_PHRASAL, new String[][]{{"left"}});
     
   }
 
