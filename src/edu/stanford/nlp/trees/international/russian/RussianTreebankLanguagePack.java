@@ -1,6 +1,6 @@
 package edu.stanford.nlp.trees.international.russian;
 
-import edu.stanford.nlp.international.french.RussianMorphoFeatureSpecification;
+import edu.stanford.nlp.international.russian.RussianMorphoFeatureSpecification;
 import edu.stanford.nlp.international.morph.MorphoFeatureSpecification;
 import edu.stanford.nlp.trees.AbstractTreebankLanguagePack;
 import edu.stanford.nlp.trees.HeadFinder;
