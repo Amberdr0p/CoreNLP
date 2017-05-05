@@ -37,29 +37,31 @@ public class RussianHeadFinder2 extends AbstractCollinsHeadFinder {
 
     // "sentence"
     // OK
-    nonTerminalInfo.put(tlp.startSymbol(), new String[][]{{"left", "VP"}, {"left"}});
-    nonTerminalInfo.put("SENT", new String[][]{{"left", "VP"}, {"left"}});
+    nonTerminalInfo.put(tlp.startSymbol(), new String[][]{{"leftdis", "VERB", "NP"}});
+    //nonTerminalInfo.put("ROOT", new String[][]{{"left", "VERB"}, {"left"}});
+    //nonTerminalInfo.put("SENT", new String[][]{{"right", "VP"}, {"right"}});
     
    
     // adverbial phrases
-    nonTerminalInfo.put("ADVP", new String[][]{{"left", "ADV"}, {"right"}});
+    nonTerminalInfo.put("ADVP", new String[][]{{"leftdis", "ADV"}, {"left"}});
+    nonTerminalInfo.put("ADVP", new String[][]{{"rightdis", "ADV"}, {"right"}});
 
     // coordinated phrases
     nonTerminalInfo.put("COORD", new String[][]{{"left", "CONJ"}, {"left"}});
 
     // noun phrases
-    nonTerminalInfo.put("NP", new String[][]{{"left", "NOUN",  "NP", "PRON"}, {"left"}});
-    nonTerminalInfo.put("NP", new String[][]{{"right", "NOUN",  "PRON", "NP"}, {"right"}});
+    nonTerminalInfo.put("NP", new String[][]{{"leftdis", "NOUN", "PRON", "NP"}});
+    nonTerminalInfo.put("NP", new String[][]{{"right", "NP"}});
    
 
     // prepositional phrases
     // OK
     //nonTerminalInfo.put("PP", new String[][]{{"left", "ADP", "NOUN"}, {"left"}}); //"в течение"
-    nonTerminalInfo.put("PP", new String[][]{{"left", "ADP"}, {"right"}}); //"в течение"
+    nonTerminalInfo.put("PP", new String[][]{{"leftdis", "ADP"}}); // правое ветвление, "в лесу"
 
     // verbal nucleus
-    nonTerminalInfo.put("VP", new String[][]{{"left", "VERB", "VP"}, {"left"}});
-    nonTerminalInfo.put("VP", new String[][]{{"right", "VP", "VERB"}, {"right"}});
+    nonTerminalInfo.put("VP", new String[][]{{"left", "VERB", "VP"}});
+    nonTerminalInfo.put("VP", new String[][]{{"right", "VERB", "VP"}});
 
     // infinitive clauses
     // OK
@@ -72,10 +74,10 @@ public class RussianHeadFinder2 extends AbstractCollinsHeadFinder {
     //nonTerminalInfo.put("VPpart", new String[][]{{"left", "VP", "V", "NOUN", "ADV", "ADJ"}, {"left"}});
 
     // relative clauses
-    nonTerminalInfo.put("Srel", new String[][]{{"left", "CONJ"}, {"left"}});
+    nonTerminalInfo.put("Srel", new String[][]{{"left", "CONJ"}});
 
     // subordinate clauses
-    nonTerminalInfo.put("Ssub", new String[][]{{"left", "CONJ"}, {"left"}});
+    nonTerminalInfo.put("Ssub", new String[][]{{"left", "CONJ"}});
 
     // parenthetical clauses
     //nonTerminalInfo.put("Sint", new String[][]{{"left", "VN", "V", "NP", "Sint", "Ssub", "PP"}, {"left"}});
