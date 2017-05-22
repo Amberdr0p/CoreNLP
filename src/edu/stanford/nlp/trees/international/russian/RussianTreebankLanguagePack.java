@@ -35,13 +35,13 @@ public class RussianTreebankLanguagePack extends AbstractTreebankLanguagePack  {
   @Override
   public HeadFinder headFinder() {
     // TODO Auto-generated method stub
-    return new RussianHeadFinder(this);
+    return new RussianHeadFinder2(this);
   }
 
   @Override
   public HeadFinder typedDependencyHeadFinder() {
     // TODO Auto-generated method stub
-    return new RussianHeadFinder(this);
+    return new RussianHeadFinder2(this);
   }
 
   @Override

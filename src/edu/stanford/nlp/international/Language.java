@@ -1,6 +1,14 @@
 package edu.stanford.nlp.international;
 
-import edu.stanford.nlp.parser.lexparser.*;
+import edu.stanford.nlp.parser.lexparser.ArabicTreebankParserParams;
+import edu.stanford.nlp.parser.lexparser.ChineseTreebankParserParams;
+import edu.stanford.nlp.parser.lexparser.EnglishTreebankParserParams;
+import edu.stanford.nlp.parser.lexparser.FrenchTreebankParserParams;
+import edu.stanford.nlp.parser.lexparser.HebrewTreebankParserParams;
+import edu.stanford.nlp.parser.lexparser.NegraPennTreebankParserParams;
+import edu.stanford.nlp.parser.lexparser.RussianTreebankParserParams;
+import edu.stanford.nlp.parser.lexparser.SpanishTreebankParserParams;
+import edu.stanford.nlp.parser.lexparser.TreebankLangParserParams;
 import edu.stanford.nlp.util.StringUtils;
 
 import java.util.Arrays;
@@ -22,7 +30,8 @@ public enum Language {
   Spanish(          new SpanishTreebankParserParams()),
   UniversalChinese( new ChineseTreebankParserParams()),
   UniversalEnglish( new EnglishTreebankParserParams()),
-  Unknown(          new EnglishTreebankParserParams());
+  Unknown(          new EnglishTreebankParserParams()),
+  Russian(          new RussianTreebankParserParams());
 
   public static final String langList = StringUtils.join(Arrays.asList(Language.values()), " ");
 

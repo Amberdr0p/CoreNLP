@@ -4,6 +4,7 @@ import edu.stanford.nlp.international.Language;
 import edu.stanford.nlp.ling.HasWord;
 import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 import edu.stanford.nlp.trees.TreebankLanguagePack;
+import edu.stanford.nlp.trees.international.russian.RussianTreebankLanguagePack;
 import edu.stanford.nlp.util.PropertiesUtils;
 import edu.stanford.nlp.util.ReflectionLoading;
 
@@ -244,7 +245,7 @@ public class Config {
     language = props.containsKey("language")
                ? getLanguage(props.getProperty("language"))
                : language;
-    tlp = language.params.treebankLanguagePack();
+    tlp = new RussianTreebankLanguagePack();
   }
 
   /**

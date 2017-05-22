@@ -1,7 +1,8 @@
 package edu.stanford.nlp.trees.international.russian;
 
-import edu.stanford.nlp.ling.CategoryWordTag;
-import edu.stanford.nlp.trees.*;
+import edu.stanford.nlp.trees.AbstractCollinsHeadFinder;
+import edu.stanford.nlp.trees.HeadFinder;
+import edu.stanford.nlp.trees.Tree;
 import edu.stanford.nlp.util.Generics;
 
 
@@ -21,7 +22,7 @@ public class RussianHeadFinder2 extends AbstractCollinsHeadFinder {
   public RussianHeadFinder2(RussianTreebankLanguagePack tlp) {
     super(tlp);
 
-
+    
     //Russian POS (UD POS-tags):
     // ADJ: adjective, ADP: adposition, ADV: adverb, AUX: auxiliary
     // CCONJ: coordinating conjunction, DET: determiner, INTJ: interjection
@@ -37,31 +38,27 @@ public class RussianHeadFinder2 extends AbstractCollinsHeadFinder {
 
     // "sentence"
     // OK
-    nonTerminalInfo.put(tlp.startSymbol(), new String[][]{{"leftdis", "VERB", "NP"}});
+    nonTerminalInfo.put(tlp.startSymbol(), new String[][]{{"left", "VERB", "VP"}});
     //nonTerminalInfo.put("ROOT", new String[][]{{"left", "VERB"}, {"left"}});
     //nonTerminalInfo.put("SENT", new String[][]{{"right", "VP"}, {"right"}});
     
    
     // adverbial phrases
-    nonTerminalInfo.put("ADVP", new String[][]{{"leftdis", "ADV"}, {"left"}});
-    nonTerminalInfo.put("ADVP", new String[][]{{"rightdis", "ADV"}, {"right"}});
-
+    nonTerminalInfo.put("ADVP", new String[][]{{"left", "ADV"}, {"left"}});
     // coordinated phrases
-    nonTerminalInfo.put("COORD", new String[][]{{"left", "CONJ"}, {"left"}});
+    nonTerminalInfo.put("COORD", new String[][]{{"leftdis", "CONJ"}, {"left"}});
 
     // noun phrases
-    nonTerminalInfo.put("NP", new String[][]{{"leftdis", "NOUN", "PRON", "NP"}});
-    nonTerminalInfo.put("NP", new String[][]{{"right", "NP"}});
+    nonTerminalInfo.put("NP", new String[][]{{"left", "NOUN", "PRON", "NP"},{"rightdis", "NP"}});
    
 
     // prepositional phrases
     // OK
     //nonTerminalInfo.put("PP", new String[][]{{"left", "ADP", "NOUN"}, {"left"}}); //"в течение"
-    nonTerminalInfo.put("PP", new String[][]{{"leftdis", "ADP"}}); // правое ветвление, "в лесу"
+    nonTerminalInfo.put("PP", new String[][]{{"left", "ADP"}}); // правое ветвление, "в лесу"
 
     // verbal nucleus
-    nonTerminalInfo.put("VP", new String[][]{{"left", "VERB", "VP"}});
-    nonTerminalInfo.put("VP", new String[][]{{"right", "VERB", "VP"}});
+    nonTerminalInfo.put("VP", new String[][]{{"left", "VERB", "VP"},{"rightdis", "VERB", "VP"}});
 
     // infinitive clauses
     // OK
@@ -103,7 +100,7 @@ public class RussianHeadFinder2 extends AbstractCollinsHeadFinder {
    * @param args The treebankFilePath
    */
   public static void main(String[] args) {
-    Treebank treebank = new DiskTreebank();
+    /*Treebank treebank = new DiskTreebank();
     CategoryWordTag.suppressTerminalDetails = true;
     treebank.loadPath(args[0]);
     final HeadFinder chf = new RussianHeadFinder2();
@@ -111,10 +108,15 @@ public class RussianHeadFinder2 extends AbstractCollinsHeadFinder {
       pt.percolateHeads(chf);
       pt.pennPrint();
       System.out.println();
-    });
+    });*/
+    HeadFinder hf = new RussianHeadFinder2();
+    // Tree h = hf.determineHead(Tree.valueOf("((NOUN Кошка) (VERB лезет)  (ADP на) (NOUN забор))"));
+    Tree h = hf.determineHead(Tree.valueOf("((ADP в) (ADJ темно-синем) (NOUN лесу) (CONJ где) (VERB трепещут) (NOUN осины))"));
+    
+    System.out.println(h);
   }
 
-  private static final long serialVersionUID = 8747319554557223422L;
+  private static final long serialVersionUID = 87412312312313222L;
 
 
 }
