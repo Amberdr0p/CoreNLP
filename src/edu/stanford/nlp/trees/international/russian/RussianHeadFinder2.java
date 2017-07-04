@@ -38,7 +38,7 @@ public class RussianHeadFinder2 extends AbstractCollinsHeadFinder {
 
     // "sentence"
     // OK
-    nonTerminalInfo.put(tlp.startSymbol(), new String[][]{{"left", "VERB", "VP"}});
+    nonTerminalInfo.put(tlp.startSymbol(), new String[][]{{"left", "VERB", "VP", "NP"}});
     //nonTerminalInfo.put("ROOT", new String[][]{{"left", "VERB"}, {"left"}});
     //nonTerminalInfo.put("SENT", new String[][]{{"right", "VP"}, {"right"}});
     
